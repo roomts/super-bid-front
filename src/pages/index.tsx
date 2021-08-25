@@ -3,7 +3,7 @@ function Home({ stars }) {
   return <div>Next stars: {stars}</div>;
 }
 
-Home.getInitialProps = async (ctx) => {
+Home.getInitialProps = async () => {
   try {
     const GithubServices = new githubServices();
     const { data } = await GithubServices.getRepos();
