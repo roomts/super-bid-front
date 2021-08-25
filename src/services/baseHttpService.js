@@ -2,10 +2,10 @@ import axios from 'axios';
 import {serialize} from '../commons/utils';
 import qs from 'qs';
 
-// TODO refatorar para TS, pegar o valor do token da aplication
 export default class BaseHttpService {
   constructor() {
     this.bearerToken  = "0a9123e87d87d2afd744a6e9ade20b6b40a746f75426936ab050f0d41c0e6e5d";
+    this.signupAuthorization = "0a9123e87d87d2afd744a6e9ade20b6b40a746f75426936ab050f0d41c0e6e5d";
     this.header = {
       headers: {
         Authorization: `Bearer ${this.bearerToken}`,
@@ -21,7 +21,7 @@ export default class BaseHttpService {
 
     this.signupHeader = {
       headers: {
-        Authorization: this.configModel.signupAuthorization,
+        Authorization: this.signupAuthorization,
       },
     };
 
@@ -35,7 +35,7 @@ export default class BaseHttpService {
   setHeader = (params) => {
     this.header = {
       headers: {
-        Authorization: `Bearer ${this.configModel.bearerToken}`,
+        Authorization: `Bearer ${this.bearerToken}`,
         ...params,
       },
     };
@@ -44,7 +44,7 @@ export default class BaseHttpService {
   resetHeader = () => {
     this.header = {
       headers: {
-        Authorization: `Bearer ${this.configModel.bearerToken}`,
+        Authorization: `Bearer ${this.bearerToken}`,
       },
     };
   };
@@ -55,7 +55,8 @@ export default class BaseHttpService {
   // payload: parameters to send through call
   // removeBearerToken: when explicit defined, makes the call without the bearer token in the header
   get = (url, removeBearerToken) => {
-    return axios.get(url, !removeBearerToken && this.header);
+    // return axios.get(url, !removeBearerToken && this.header);
+    return axios.get(url);
   };
 
   getSignup = (url) => {

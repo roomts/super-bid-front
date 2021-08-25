@@ -1,6 +1,7 @@
 const UAT = true;
-const URL = UAT ? 'https://uat.super-bid.com' : 'https://dotznext.com';
+const URL = UAT ? 'https://api.github.com' : 'https://api.github.com';
+
 
 export const Config = {
-  API_GEOLOCATION_URL: `${URL}/geolocation`,
+  API_GITHUB_URL: `${URL}/repos`,
 };
